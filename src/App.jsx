@@ -348,6 +348,7 @@ function ListView({ templates, onOpen, onToggle, onNew }) {
               <th className="px-4 py-2.5 font-semibold">Personas</th>
               <th className="px-4 py-2.5 font-semibold">Utilities</th>
               <th className="px-4 py-2.5 font-semibold">Status</th>
+              <th className="px-4 py-2.5 font-semibold">Last Updated By</th>
               <th className="px-4 py-2.5 text-right font-semibold">Actions</th>
             </tr>
           </thead>
@@ -394,6 +395,16 @@ function ListView({ templates, onOpen, onToggle, onNew }) {
                   </td>
                   <td className="px-4 py-3">
                     <span className={`inline-flex rounded-full px-2 py-0.5 text-[11px] font-semibold ring-1 ${STATUS[t.status].cls}`}>{STATUS[t.status].label}</span>
+                  </td>
+                  <td className="px-4 py-3">
+                    {t.versions?.[0] ? (
+                      <div>
+                        <div className="font-medium text-slate-700">{t.versions[0].by}</div>
+                        <div className="mt-0.5 text-[11px] text-slate-400">{t.versions[0].at}</div>
+                      </div>
+                    ) : (
+                      <span className="text-slate-300">—</span>
+                    )}
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex items-center justify-end gap-1.5">
