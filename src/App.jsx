@@ -47,7 +47,7 @@ const REGISTRY = [
   { key: "account.serviceAddress", label: "Service address", sample: "1420 Cedar Ln", group: "Account", channels: ["email", "push"], categories: ["*"] },
   { key: "bill.amount", label: "Bill amount", sample: "$142.38", group: "Billing", channels: ALL, categories: ["Billing", "Payment"] },
   { key: "bill.dueDate", label: "Bill due date", sample: "Jun 28, 2026", group: "Billing", channels: ALL, categories: ["Billing", "Payment"] },
-  { key: "invoice.link", label: "Invoice link", sample: "swgas.com/i/9921", group: "Billing", channels: ["email", "push"], categories: ["Billing"] },
+  { key: "invoice.link", label: "Invoice link", sample: "utility.com/i/9921", group: "Billing", channels: ["email", "push"], categories: ["Billing"] },
   { key: "payment.amount", label: "Payment amount", sample: "$142.38", group: "Payment", channels: ALL, categories: ["Payment", "Billing"] },
   { key: "payment.confirmation", label: "Confirmation #", sample: "PMT‑99214", group: "Payment", channels: ALL, categories: ["Payment"] },
   { key: "payment.method", label: "Payment method", sample: "Visa •4821", group: "Payment", channels: ["email", "push"], categories: ["Payment"] },
@@ -74,8 +74,8 @@ const seed = [
     content: "Hi {{customer.firstName}},\n\nWe've received your payment of {{payment.amount}} on account {{account.number}}. Your confirmation number is {{payment.confirmation}}.\n\nThanks for choosing {{brand.companyName}}.\n\n{{regulatory.unsubscribe}}",
     version: 7,
     versions: [
-      { v: 7, status: "active", by: "client.admin@swgas", at: "Jun 14, 2026 · 9:12 AM", note: "Added confirmation # to subject" },
-      { v: 6, status: "archived", by: "client.admin@swgas", at: "May 30, 2026 · 2:40 PM", note: "Reworded greeting" },
+      { v: 7, status: "active", by: "client.admin@utility", at: "Jun 14, 2026 · 9:12 AM", note: "Added confirmation # to subject" },
+      { v: 6, status: "archived", by: "client.admin@utility", at: "May 30, 2026 · 2:40 PM", note: "Reworded greeting" },
       { v: 5, status: "archived", by: "vendor.pm@sew", at: "May 2, 2026 · 11:05 AM", note: "Base rollout" },
     ],
   },
@@ -83,11 +83,11 @@ const seed = [
     id: "t2", name: "Payment confirmation", category: "Payment", channel: "sms",
     personas: ["Residential"], utilities: ["power", "gas"], status: "active",
     inheritance: "shared", locked: false, requiredVars: ["payment.amount", "regulatory.optOut"],
-    subject: "", senderId: "SWGAS",
+    subject: "", senderId: "utility",
     content: "{{brand.companyName}}: Payment of {{payment.amount}} received. Conf {{payment.confirmation}}. {{regulatory.optOut}}",
     version: 4,
     versions: [
-      { v: 4, status: "active", by: "client.admin@swgas", at: "Jun 10, 2026 · 4:01 PM", note: "Tightened to 1 segment" },
+      { v: 4, status: "active", by: "client.admin@utility", at: "Jun 10, 2026 · 4:01 PM", note: "Tightened to 1 segment" },
       { v: 3, status: "archived", by: "vendor.pm@sew", at: "May 2, 2026 · 11:05 AM", note: "Base rollout" },
     ],
   },
@@ -111,7 +111,7 @@ const seed = [
     content: "Service in {{outage.area}} is back on. Thanks for your patience, {{customer.firstName}}.",
     version: 3,
     versions: [
-      { v: 3, status: "active", by: "client.admin@swgas", at: "Jun 8, 2026 · 1:22 PM", note: "Friendlier copy" },
+      { v: 3, status: "active", by: "client.admin@utility", at: "Jun 8, 2026 · 1:22 PM", note: "Friendlier copy" },
       { v: 2, status: "archived", by: "vendor.pm@sew", at: "Apr 18, 2026 · 9:35 AM", note: "Base rollout" },
     ],
   },
@@ -123,7 +123,7 @@ const seed = [
     content: "Hi {{customer.firstName}},\n\nYour bill of {{bill.amount}} is due {{bill.dueDate}}. View it here: {{invoice.link}}\n\nQuestions? Call {{brand.supportPhone}}.\n\n{{regulatory.unsubscribe}}",
     version: 2,
     versions: [
-      { v: 2, status: "draft", by: "client.admin@swgas", at: "Jun 18, 2026 · 10:14 AM", note: "Draft — pending review" },
+      { v: 2, status: "draft", by: "client.admin@utility", at: "Jun 18, 2026 · 10:14 AM", note: "Draft — pending review" },
       { v: 1, status: "archived", by: "vendor.pm@sew", at: "May 2, 2026 · 11:05 AM", note: "Base rollout" },
     ],
   },
@@ -135,7 +135,7 @@ const seed = [
     content: "Hello {{customer.firstName}}. This is a reminder from {{brand.companyName}} about your service appointment on request {{service.requestId}}, scheduled for {{service.window}}. Press 1 to confirm, 2 to reschedule. {{regulatory.optOut}}",
     version: 5,
     versions: [
-      { v: 5, status: "active", by: "client.admin@swgas", at: "Jun 12, 2026 · 3:50 PM", note: "Added DTMF reschedule" },
+      { v: 5, status: "active", by: "client.admin@utility", at: "Jun 12, 2026 · 3:50 PM", note: "Added DTMF reschedule" },
     ],
   },
   {
@@ -275,7 +275,7 @@ export default function App() {
           <div className="text-[11px] text-slate-400">Notifications &nbsp;›&nbsp; Self‑service templates</div>
         </div>
         <div className="ml-auto flex items-center gap-2 text-[11px]">
-          <span className="rounded-full bg-slate-100 px-2.5 py-1 font-medium text-slate-500 ring-1 ring-slate-200">Tenant: Utility Gas</span>
+          <span className="rounded-full bg-slate-100 px-2.5 py-1 font-medium text-slate-500 ring-1 ring-slate-200">Tenant: Utility</span>
           <span className="flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1 font-medium text-emerald-700 ring-1 ring-emerald-200">
             <Shield size={12} /> Production‑safe mode
           </span>
@@ -630,7 +630,7 @@ function Editor({ tpl, onBack, onSave, flash }) {
   const doPublish = () => {
     const nv = tpl.version + 1;
     const versions = [
-      { v: nv, status: "active", by: "client.admin@swgas", at: "Jun 19, 2026 · now", note: "Published from Studio" },
+      { v: nv, status: "active", by: "client.admin@utility", at: "Jun 19, 2026 · now", note: "Published from Studio" },
       ...tpl.versions.map((x) => ({ ...x, status: x.status === "active" ? "archived" : x.status })),
     ];
     onSave({ ...tpl, subject: draft.subject, content: draft.content, status: "active", version: nv, versions });
@@ -878,8 +878,8 @@ function Preview({ tpl, draft }) {
           <div className="mb-3 flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-cyan-700 text-[11px] font-bold text-white">SW</div>
             <div className="text-[11px] leading-tight">
-              <div className="font-semibold text-slate-700">Utility Gas</div>
-              <div className="text-slate-400">no‑reply@swgas.com · to Maria Alvarez</div>
+              <div className="font-semibold text-slate-700">Utility</div>
+              <div className="text-slate-400">no‑reply@utility.com · to Maria Alvarez</div>
             </div>
           </div>
           <div className="text-[13px] leading-relaxed text-slate-700"><RichText text={draft.content} /></div>
@@ -890,7 +890,7 @@ function Preview({ tpl, draft }) {
   if (tpl.channel === "sms")
     return (
       <PhoneFrame label="Messages">
-        <div className="mb-1 text-center text-[10px] text-slate-400">{tpl.senderId || "SWGAS"}</div>
+        <div className="mb-1 text-center text-[10px] text-slate-400">{tpl.senderId || "utility"}</div>
         <div className="max-w-[85%] rounded-2xl rounded-tl-sm bg-slate-200 px-3 py-2 text-[12.5px] leading-snug text-slate-800">
           <RichText text={draft.content} />
         </div>
@@ -903,7 +903,7 @@ function Preview({ tpl, draft }) {
         <div className="rounded-2xl bg-white/95 p-3 shadow-sm backdrop-blur">
           <div className="mb-1 flex items-center gap-2">
             <div className="flex h-5 w-5 items-center justify-center rounded bg-gradient-to-br from-teal-500 to-cyan-700 text-[9px] font-bold text-white">SW</div>
-            <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Utility Gas</span>
+            <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Utility</span>
             <span className="ml-auto text-[10px] text-slate-400">now</span>
           </div>
           <div className="text-[12.5px] font-semibold text-slate-900">{draft.pushTitle || "Notification"}</div>
@@ -1063,7 +1063,7 @@ function PublishModal({ tpl, warnings, onClose, onPublish, flash }) {
           <Row ok={tested} label="Test send to yourself" warn={!tested} />
         </div>
 
-        <button onClick={() => { setTested(true); flash("Test sent to client.admin@swgas."); }}
+        <button onClick={() => { setTested(true); flash("Test sent to client.admin@utility."); }}
           className="mb-3 inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-slate-200 bg-white py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50">
           <Send size={14} /> Send test to me first
         </button>
@@ -1124,11 +1124,11 @@ function CreateWizard({ existing, onCancel, onCreate }) {
       id: "t" + Date.now(), name: name.trim(), category, channel,
       personas, utilities: utils, status: "draft", inheritance, locked: false,
       requiredVars, subject, pushTitle, content,
-      senderId: channel === "sms" ? "SWGAS" : undefined,
+      senderId: channel === "sms" ? "utility" : undefined,
       voice: channel === "voice" ? "Joanna (en‑US)" : undefined,
       dtmf: channel === "voice" ? ["1 — Confirm", "2 — Reschedule", "9 — Repeat"] : undefined,
       version: 1,
-      versions: [{ v: 1, status: "draft", by: "client.admin@swgas", at: "Jun 19, 2026 · now", note: mode === "clone" ? "Cloned in Studio" : "Created in Studio" }],
+      versions: [{ v: 1, status: "draft", by: "client.admin@utility", at: "Jun 19, 2026 · now", note: mode === "clone" ? "Cloned in Studio" : "Created in Studio" }],
     };
   };
 
