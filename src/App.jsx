@@ -57,7 +57,7 @@ const REGISTRY = [
   { key: "service.requestId", label: "Request ID", sample: "SR‑20817", group: "Service", channels: ALL, categories: ["Service"] },
   { key: "service.window", label: "Appointment window", sample: "8 AM – 12 PM", group: "Service", channels: ALL, categories: ["Service"] },
   { key: "service.technician", label: "Technician", sample: "Devon R.", group: "Service", channels: ["email", "push", "voice"], categories: ["Service"] },
-  { key: "brand.companyName", label: "Company name", sample: "SouthWest Gas", group: "Branding", channels: ALL, categories: ["*"] },
+  { key: "brand.companyName", label: "Company name", sample: "Utility", group: "Branding", channels: ALL, categories: ["*"] },
   { key: "brand.supportPhone", label: "Support phone", sample: "1‑877‑860‑6020", group: "Branding", channels: ALL, categories: ["*"] },
   { key: "regulatory.unsubscribe", label: "Unsubscribe link", sample: "Unsubscribe", group: "Regulatory", channels: ["email"], categories: ["*"] },
   { key: "regulatory.optOut", label: "Opt‑out notice", sample: "Reply STOP to opt out", group: "Regulatory", channels: ["sms", "voice"], categories: ["*"] },
@@ -275,7 +275,7 @@ export default function App() {
           <div className="text-[11px] text-slate-400">Notifications &nbsp;›&nbsp; Self‑service templates</div>
         </div>
         <div className="ml-auto flex items-center gap-2 text-[11px]">
-          <span className="rounded-full bg-slate-100 px-2.5 py-1 font-medium text-slate-500 ring-1 ring-slate-200">Tenant: SouthWest Gas</span>
+          <span className="rounded-full bg-slate-100 px-2.5 py-1 font-medium text-slate-500 ring-1 ring-slate-200">Tenant: Utility Gas</span>
           <span className="flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1 font-medium text-emerald-700 ring-1 ring-emerald-200">
             <Shield size={12} /> Production‑safe mode
           </span>
@@ -878,7 +878,7 @@ function Preview({ tpl, draft }) {
           <div className="mb-3 flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-cyan-700 text-[11px] font-bold text-white">SW</div>
             <div className="text-[11px] leading-tight">
-              <div className="font-semibold text-slate-700">SouthWest Gas</div>
+              <div className="font-semibold text-slate-700">Utility Gas</div>
               <div className="text-slate-400">no‑reply@swgas.com · to Maria Alvarez</div>
             </div>
           </div>
@@ -903,7 +903,7 @@ function Preview({ tpl, draft }) {
         <div className="rounded-2xl bg-white/95 p-3 shadow-sm backdrop-blur">
           <div className="mb-1 flex items-center gap-2">
             <div className="flex h-5 w-5 items-center justify-center rounded bg-gradient-to-br from-teal-500 to-cyan-700 text-[9px] font-bold text-white">SW</div>
-            <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">SouthWest Gas</span>
+            <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Utility Gas</span>
             <span className="ml-auto text-[10px] text-slate-400">now</span>
           </div>
           <div className="text-[12.5px] font-semibold text-slate-900">{draft.pushTitle || "Notification"}</div>
